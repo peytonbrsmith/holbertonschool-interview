@@ -2,6 +2,7 @@
 # Determins if boxes are unlockable
 
 def canUnlockAll(boxes):
+    """ Determins if ALL boxes are unlockable """
     box_num = 0
     keys_avail = []
     locked_boxes = []
