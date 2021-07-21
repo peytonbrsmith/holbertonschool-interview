@@ -25,7 +25,9 @@ def canUnlockAll(boxes):
                                 keys_avail.append(key)
                         locked_boxes.remove(lbox)
         box_num += 1
-    if locked_boxes == [] and len(keys_avail) == len(boxes) - 1:
+    if locked_boxes == []:
+        return True
+    elif len(boxes) == 1:
         return True
     else:
         return False
