@@ -1,0 +1,2 @@
+language = "c"
+run = "gcc -Wall -Werror -Wextra -pedantic *.c && ./a.out"
