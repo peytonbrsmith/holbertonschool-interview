@@ -3,6 +3,7 @@
 This is the 0-minoperations.py module.
 """
 
+
 def minOperations(n):
     """
     find the prime factorization of n
