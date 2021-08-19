@@ -90,7 +90,7 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
  */
 int (*topple(int grid[3][3]))[3]
 {
-	int i, j, grains;
+	int i, j;
 	int new_grid[3][3];
 
 	for (i = 0; i < 3; i++)
