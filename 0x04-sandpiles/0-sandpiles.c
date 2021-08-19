@@ -75,10 +75,12 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 				}
 			}
 			if (stable == 0)
-			{
-				grid1 = topple(grid1);
-				print_grid(grid1);
-			}
+				break;
+		}
+		if (stable == 0)
+		{
+			grid1 = topple(grid1);
+			print_grid(grid1);
 		}
 	}
 }
