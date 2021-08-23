@@ -6,7 +6,7 @@
  * is_palindrome - check if a linked list is a palindrome
  * @head: head of the linked list
  *
- * Return: Always 0.
+ * Return: 1 if the linked list is a palindrome, 0 otherwise
  */
 int is_palindrome(listint_t **head)
 {
