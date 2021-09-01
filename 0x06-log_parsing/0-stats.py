@@ -35,6 +35,7 @@ for line in sys.stdin:
             if value != 0:
                 print("{}: {}".format(key, value))
     line_count += 1
+
 print("File size: {}".format(file_size))
 for key, value in sorted(status_codes.items()):
     if value != 0:
