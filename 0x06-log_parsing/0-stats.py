@@ -21,7 +21,6 @@ pattern = re.compile(
 
 file_size = 0
 for line in sys.stdin:
-    line_count += 1
     # if (pattern.search(line)):
     line = line.split()
     for token in line:
@@ -30,11 +29,12 @@ for line in sys.stdin:
         elif token.isdigit():
                 file_size += int(token)
 
-    if (line_count % 10 == 0):
+    if (line_count % 10 == 0 and line_count != 0):
         print("File size: {}".format(file_size))
         for key, value in sorted(status_codes.items()):
             if value != 0:
                 print("{}: {}".format(key, value))
+    line_count += 1
 print("File size: {}".format(file_size))
 for key, value in sorted(status_codes.items()):
     if value != 0:
