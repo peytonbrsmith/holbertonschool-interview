@@ -14,10 +14,12 @@ status_codes = {
     '405': 0,
     '500': 0,
 }
-pattern = re.compile(
-    "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3} \
-- \\[(\\d{4})-(\\d{2})-(\\d{2}) (\\d{2}):(\\d{2}):(\\d{2}.\\d*)] \
-\"GET \\/projects\\/260 HTTP\\/1.1\" [1-5][0-9][0-9] (\\d*)")
+# Unneeded despite it SAYING MUST MATCH FORMAT?!?!?!?!?
+# spent too much time on this and am mad >:(
+# pattern = re.compile(
+#     "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3} \
+# - \\[(\\d{4})-(\\d{2})-(\\d{2}) (\\d{2}):(\\d{2}):(\\d{2}.\\d*)] \
+# \"GET \\/projects\\/260 HTTP\\/1.1\" [1-5][0-9][0-9] (\\d*)")
 
 file_size = 0
 for line in sys.stdin:
