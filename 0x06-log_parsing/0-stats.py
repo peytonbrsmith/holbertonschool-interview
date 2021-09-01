@@ -22,16 +22,13 @@ pattern = re.compile(
 file_size = 0
 for line in sys.stdin:
     line_count += 1
-    if (pattern.search(line)):
-        line = line.split()
-        for token in line:
-            if token in status_codes:
-                status_codes[token] += 1
-                try:
-                    if (line[8].isdigit()):
-                        file_size += int(line[8])
-                except IndexError:
-                    break
+    # if (pattern.search(line)):
+    line = line.split()
+    for token in line:
+        if token in status_codes:
+            status_codes[token] += 1
+        elif token.isdigit():
+                file_size += int(token)
 
     if (line_count % 10 == 0):
         print("File size: {}".format(file_size))
