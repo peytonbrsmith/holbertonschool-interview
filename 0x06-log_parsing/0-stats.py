@@ -3,7 +3,7 @@
 import sys
 import re
 
-line_count = 0
+line_count = 1
 status_codes = {
     '200': 0,
     '301': 0,
@@ -23,17 +23,20 @@ file_size = 0
 for line in sys.stdin:
     # if (pattern.search(line)):
     line = line.split()
-    for token in line:
-        if token in status_codes:
-            status_codes[token] += 1
-        elif token.isdigit():
-                file_size += int(token)
-    line_count += 1
+    status_codes[line[7]] += 1
+    file_size += int(line[8])
+    # for token in line:
+    #     if token in status_codes:
+    #         status_codes[token] += 1
+    #     elif token.isdigit():
+    #             file_size += int(token)
+    #             print(line_count)
     if (line_count % 10 == 0 and line_count != 0):
         print("File size: {}".format(file_size))
         for key, value in sorted(status_codes.items()):
             if value != 0:
                 print("{}: {}".format(key, value))
+    line_count += 1
 
 
 print("File size: {}".format(file_size))
