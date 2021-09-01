@@ -21,10 +21,10 @@ pattern = re.compile(
 
 file_size = 0
 for line in sys.stdin:
-    # if (pattern.search(line)):
-    line = line.split()
-    status_codes[line[7]] += 1
-    file_size += int(line[8])
+    if (pattern.search(line)):
+        line = line.split()
+        status_codes[line[7]] += 1
+        file_size += int(line[8])
     # for token in line:
     #     if token in status_codes:
     #         status_codes[token] += 1
