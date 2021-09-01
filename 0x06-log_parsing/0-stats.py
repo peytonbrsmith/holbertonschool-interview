@@ -23,10 +23,13 @@ file_size = 0
 for line in sys.stdin:
     # if (pattern.search(line)):
     line = line.split()
-    if (line[7] in status_codes):
-        status_codes[line[7]] += 1
-    if (line[8].isdigit()):
-        file_size += int(line[8])
+    try:
+        if (line[7] in status_codes):
+            status_codes[line[7]] += 1
+        if (line[8].isdigit()):
+            file_size += int(line[8])
+    except IndexError:
+        continue
     # for token in line:
     #     if token in status_codes:
     #         status_codes[token] += 1
