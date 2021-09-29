@@ -10,7 +10,7 @@ void slide_left(int *line, size_t size)
 	{
 		if (*(line + i) == 0)
 		{
-			while (*(line + i) == 0)
+			while (*(line + i) == 0 && i < (int)size)
 				i++;
 			j = i + 1;
 			while (*(line + j) == 0)
@@ -44,6 +44,22 @@ void slide_right(int *line, size_t size)
 {
 	int i, j;
 
+	for (i = (size - 1), j = (size - 2); i > 0; i--)
+	{
+		if (*(line + j) != 0)
+		{
+			while (*(line + j) != 0 && i > 0)
+				j--;
+		}
+		if (*(line + i) == 0)
+		{
+			while (*(line + i) == 0)
+				i--;
+			*(line + j) = *(line + i);
+			*(line + i) = 0;
+		}
+	}
+
 	for (i = (size - 1), j = (size - 2); i > 0; i--, j--)
 	{
 		if (*(line + i) == 0)
@@ -59,21 +75,6 @@ void slide_right(int *line, size_t size)
 		{
 			*(line + i) += *(line + j);
 			*(line + j) = 0;
-		}
-	}
-	for (i = (size - 1), j = (size - 2); i > 0; i--)
-	{
-		if (*(line + j) != 0)
-		{
-			while (*(line + j) != 0)
-				j--;
-		}
-		if (*(line + i) == 0)
-		{
-			while (*(line + i) == 0)
-				i--;
-			*(line + j) = *(line + i);
-			*(line + i) = 0;
 		}
 	}
 }
