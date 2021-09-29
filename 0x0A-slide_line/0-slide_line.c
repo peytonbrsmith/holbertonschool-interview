@@ -80,9 +80,6 @@ void slide_right(int *line, size_t size)
 
 int slide_line(int *line, size_t size, int direction)
 {
-	int i;
-	int j;
-
 	if (direction != SLIDE_LEFT && direction != SLIDE_RIGHT)
 	{
 		return (0);
