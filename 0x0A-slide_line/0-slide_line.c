@@ -10,11 +10,15 @@ void shift_zeroes(int *line, size_t size, int direction)
 	{
 		for (i = 0, j = 0; i < (int)size; i++)
 		{
+			printf("I: %d, VAL: %d\n", i, *(line + i));
+			printf("J: %d, VAL: %d\n", j, *(line + j));
 			if (*(line + j) != 0)
 			{
 				while (*(line + j) != 0)
 					j++;
 			}
+			printf("I: %d, VAL: %d\n", i, *(line + i));
+			printf("J: %d, VAL: %d\n", j, *(line + j));
 			if (*(line + i) == 0)
 			{
 				while (*(line + i) == 0)
@@ -25,17 +29,23 @@ void shift_zeroes(int *line, size_t size, int direction)
 					*(line + i) = 0;
 				}
 			}
+			printf("I: %d, VAL: %d\n", i, *(line + i));
+			printf("J: %d, VAL: %d\n", j, *(line + j));
 		}
 	}
 	else
 	{
 		for (i = (size - 1), j = (size - 1); i > 0; i--)
 		{
+			printf("I: %d, VAL: %d\n", i, *(line + i));
+			printf("J: %d, VAL: %d\n", j, *(line + j));
 			if (*(line + j) != 0)
 			{
 				while (j > 0 && *(line + j) != 0)
 					j--;
 			}
+			printf("I: %d, VAL: %d\n", i, *(line + i));
+			printf("J: %d, VAL: %d\n", j, *(line + j));
 			if (*(line + i) == 0)
 			{
 				while (*(line + i) == 0)
@@ -46,6 +56,8 @@ void shift_zeroes(int *line, size_t size, int direction)
 					*(line + i) = 0;
 				}
 			}
+			printf("I: %d, VAL: %d\n", i, *(line + i));
+			printf("J: %d, VAL: %d\n", j, *(line + j));
 		}
 	}
 }
@@ -89,8 +101,8 @@ void slide_right(int *line, size_t size)
 		}
 
 		j = i - 1;
-		while (*(line + j) == 0)
-			j--;
+			while (*(line + j) == 0)
+				j--;
 		if (*(line + i) == *(line + j))
 		{
 			*(line + i) += *(line + j);
@@ -98,6 +110,7 @@ void slide_right(int *line, size_t size)
 		}
 	}
 
+	shift_zeroes(line, size, 1);
 	shift_zeroes(line, size, 1);
 }
 
