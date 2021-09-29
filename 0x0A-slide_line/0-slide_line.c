@@ -2,9 +2,53 @@
 #include <stdio.h>
 #include "slide_line.h"
 
+void shift_zeroes(int *line, size_t size, int direction)
+{
+	int i, j;
+
+	if (direction == SLIDE_LEFT)
+	{
+		for (i = 0, j = 1; i < (int)size; i++)
+		{
+			if (*(line + j) != 0)
+			{
+				while (*(line + j) != 0)
+					j++;
+			}
+			if (*(line + i) == 0)
+			{
+				while (*(line + i) == 0)
+					i++;
+				*(line + j) = *(line + i);
+				*(line + i) = 0;
+			}
+		}
+	}
+	else
+	{
+		for (i = (size - 1), j = (size - 2); i > 0; i--)
+		{
+			if (*(line + j) != 0)
+			{
+				while (*(line + j) != 0 && i > 0)
+					j--;
+			}
+			if (*(line + i) == 0)
+			{
+				while (*(line + i) == 0)
+					i--;
+				*(line + j) = *(line + i);
+				*(line + i) = 0;
+			}
+		}
+	}
+}
+
 void slide_left(int *line, size_t size)
 {
 	int i, j;
+
+	shift_zeroes(line, size, -1);
 
 	for (i = 0, j = 1; i < (int)size; i++, j++)
 	{
@@ -23,42 +67,15 @@ void slide_left(int *line, size_t size)
 			*(line + j) = 0;
 		}
 	}
-	for (i = 0, j = 1; i < (int)size; i++)
-	{
-		if (*(line + j) != 0)
-		{
-			while (*(line + j) != 0)
-				j++;
-		}
-		if (*(line + i) == 0)
-		{
-			while (*(line + i) == 0)
-				i++;
-			*(line + j) = *(line + i);
-			*(line + i) = 0;
-		}
-	}
+
+	shift_zeroes(line, size, -1);
 }
 
 void slide_right(int *line, size_t size)
 {
 	int i, j;
 
-	for (i = (size - 1), j = (size - 2); i > 0; i--)
-	{
-		if (*(line + j) != 0)
-		{
-			while (*(line + j) != 0 && i > 0)
-				j--;
-		}
-		if (*(line + i) == 0)
-		{
-			while (*(line + i) == 0)
-				i--;
-			*(line + j) = *(line + i);
-			*(line + i) = 0;
-		}
-	}
+	shift_zeroes(line, size, 1);
 
 	for (i = (size - 1), j = (size - 2); i > 0; i--, j--)
 	{
@@ -77,6 +94,8 @@ void slide_right(int *line, size_t size)
 			*(line + j) = 0;
 		}
 	}
+
+	shift_zeroes(line, size, 1);
 }
 
 int slide_line(int *line, size_t size, int direction)
