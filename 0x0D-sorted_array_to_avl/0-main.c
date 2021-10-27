@@ -35,6 +35,6 @@ int main(void)
     if (!tree)
         return (1);
     print_array(array, n);
-    binary_tree_print(tree);
+    binary_tree_print(tree); /* Function provided by Holberton */
     return (0);
 }

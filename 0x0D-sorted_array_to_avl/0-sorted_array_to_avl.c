@@ -34,6 +34,8 @@ avl_t *create_tree(int *array, int start, int end, avl_t *root)
 	mid = (start + end) / 2;
 
 	root = create_leaf(root, array[mid]);
+	if (root == NULL)
+		return (NULL);
 
 	root->left = create_tree(array, start, mid - 1, root);
 	root->right = create_tree(array, mid + 1, end, root);
