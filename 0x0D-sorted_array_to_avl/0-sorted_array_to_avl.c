@@ -61,7 +61,10 @@ avl_t *create_leaf(avl_t *root, int value)
 	(new_leaf)->right = NULL;
 
 	if (root == NULL)
+	{
+		new_leaf->parent = NULL;
 		root = new_leaf;
+	}
 	else
 		new_leaf->parent = root;
 
