@@ -50,7 +50,7 @@ avl_t *create_tree(int *array, int start, int end, avl_t *root)
  */
 avl_t *create_leaf(avl_t *root, int value)
 {
-	avl_t *new_leaf;
+	avl_t *new_leaf = NULL;
 
 	new_leaf = malloc(sizeof(avl_t));
 	if (new_leaf == NULL)
