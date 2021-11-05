@@ -12,32 +12,32 @@ void free_skiplist(skiplist_t *list);
  */
 skiplist_t *linear_skip(skiplist_t *list, int value)
 {
-    if (!list)
-        return (NULL);
+	if (!list)
+		return (NULL);
 
-    if (value > list->n)
-    {
-        printf("Value checked at index [%ld] = [%d]\n", list->index, list->n);
-        if (list->express != NULL)
-        {
-            if (list->express->n == value)
-            {
-                return list->express;
-            }
-            else if (list->express->n > value)
-            {
-                printf("Value found between indexes: [%ld] = [%ld]\n", list->index, list->express->index);
-                return linear_skip(list->next, value);
-            }
-            else
-                return linear_skip(list->express, value);
-        }
-        else
-        {
-            return linear_skip(list->next, value);
-        }
-    }
-    else if (value == list->n)
-        return list;
-    return (list);
+	if (value > list->n)
+	{
+		printf("Value checked at index [%ld] = [%d]\n", list->index, list->n);
+		if (list->express != NULL)
+		{
+			if (list->express->n == value)
+			{
+				return list->express;
+			}
+			else if (list->express->n > value)
+			{
+				printf("Value found between indexes: [%ld] = [%ld]\n", list->index, list->express->index);
+				return linear_skip(list->next, value);
+			}
+			else
+				return linear_skip(list->express, value);
+		}
+		else
+		{
+			return linear_skip(list->next, value);
+		}
+	}
+	else if (value == list->n)
+		return list;
+	return (list);
 }
