@@ -14,7 +14,7 @@ int found = 0;
  * @list: skip list to search
  * @value: value to search for
  *
- * Returns: the index of the element if found, otherwise null
+ * Return: the index of the element if found, otherwise null
  */
 skiplist_t *linear_skip(skiplist_t *list, int value)
 {
