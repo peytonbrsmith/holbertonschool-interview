@@ -7,6 +7,7 @@
  * @arr: array to be converted
  * @n: size of array
  * @i: index of current node
+ * @size: size of array
  *
  * Return: void
  */
