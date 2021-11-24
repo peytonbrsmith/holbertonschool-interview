@@ -10,7 +10,7 @@
  *
  * Return: void
  */
-void heapify(int *arr, int n, int i)
+void heapify(int *arr, int n, int i, size_t size)
 {
 	int largest = i;
 	int l = 2 * i + 1;
@@ -29,9 +29,9 @@ void heapify(int *arr, int n, int i)
 		arr[i] = arr[largest];
 		arr[largest] = swap;
 
-		print_array(arr, (size_t)n);
+		print_array(arr, size);
 
-		heapify(arr, n, largest);
+		heapify(arr, n, largest, size);
 	}
 }
 
@@ -50,7 +50,7 @@ void heap_sort(int *array, size_t size)
 
 	for (i = n / 2 - 1; i >= 0; i--)
 	{
-		heapify(array, n, i);
+		heapify(array, n, i, size);
 	}
 
 	for (i = n - 1; i > 0; i--)
@@ -60,7 +60,7 @@ void heap_sort(int *array, size_t size)
 		array[0] = array[i];
 		array[i] = temp;
 
-		heapify(array, i, 0);
+		heapify(array, i, 0, size);
 
 		if (i > 0)
 			print_array(array, size);
