@@ -60,9 +60,9 @@ void heap_sort(int *array, size_t size)
 		array[0] = array[i];
 		array[i] = temp;
 
-		heapify(array, i, 0, size);
-
 		if (i > 0)
 			print_array(array, size);
+
+		heapify(array, i, 0, size);
 	}
 }
