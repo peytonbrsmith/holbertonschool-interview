@@ -15,7 +15,6 @@ int advanced_binary(int *array, size_t size, int value)
     if (array == NULL || size < 1)
         return (-1);
 
-    // recursive binary search
     return (binary_search(array, 0, size - 1, value));
 }
 
