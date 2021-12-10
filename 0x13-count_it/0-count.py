@@ -17,7 +17,7 @@ def count_words(subreddit, word_list=[], after=None, count_dict=None):
         first_hot = requests.get(
             "https://reddit.com/r/{}/hot.json?limit=100".format(subreddit),
             headers={'User-agent': 'test'})
-        if 'data' not in first_hot:
+        if 'data' not in first_hot.json():
             return None
         children = first_hot.json().get("data").get("children")
         if (count_dict is None):
