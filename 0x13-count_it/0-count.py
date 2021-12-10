@@ -16,7 +16,7 @@ def count_words(subreddit, word_list=[], after=None, count_dict=None):
             headers={'User-agent': 'test'})
         if subreddit_exists.status_code == 200:
             first_hot = requests.get(
-                "https://reddit.com/r/{}/hot.json".format(subreddit),
+                "https://reddit.com/r/{}/hot.json?limit=100".format(subreddit),
                 headers={'User-agent': 'test'})
             children = first_hot.json().get("data").get("children")
             for child in children:
@@ -46,7 +46,7 @@ def count_words(subreddit, word_list=[], after=None, count_dict=None):
         after = next_hot.json().get("data").get("after")
         if after is not None:
             return count_words(subreddit, word_list, after, count_dict)
-        for key, value in sorted(count_dict.items()):
+        for key, value in sorted(count_dict.items(), key=lambda x:x[1]):
             if (value > 0):
                 print("{}: {}".format(key, value))
         return (count_dict)
