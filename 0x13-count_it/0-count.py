@@ -13,8 +13,8 @@ def count_words(subreddit, word_list=[], after=None, count_dict=None):
     subreddit_exists = requests.get(
             "https://reddit.com/r/{}".format(subreddit),
             headers={'User-agent': 'test'})
-        if subreddit_exists.status_code != 200:
-            return None
+    if subreddit_exists.status_code != 200:
+        return None
     if after is None:
             first_hot = requests.get(
                 "https://reddit.com/r/{}/hot.json?limit=100".format(subreddit),
