@@ -10,6 +10,8 @@ import sys
 def count_words(subreddit, word_list=[], after=None, count_dict=None):
     """ returns a list containing the titles of
     all hot articles for a given subreddit """
+    for word in word_list:
+        word = word.lower()
     if after is None:
         subreddit_exists = requests.get(
             "https://reddit.com/r/{}".format(subreddit),
@@ -25,7 +27,7 @@ def count_words(subreddit, word_list=[], after=None, count_dict=None):
                 if (count_dict is None):
                     count_dict = dict.fromkeys(word_list, 0)
                 for word in word_list:
-                    count = title.lower().count(word.lower())
+                    count = title.lower().count(word)
                     count_dict[word] += count
             after = first_hot.json().get("data").get("after")
             count_words(subreddit, word_list, after, count_dict)
@@ -46,7 +48,7 @@ def count_words(subreddit, word_list=[], after=None, count_dict=None):
         after = next_hot.json().get("data").get("after")
         if after is not None:
             return count_words(subreddit, word_list, after, count_dict)
-        for key, value in sorted(count_dict.items(), key=lambda x:x[1]):
+        for key, value in sorted(count_dict.items(), key=lambda x: x[1]):
             if (value > 0):
                 print("{}: {}".format(key, value))
         return (count_dict)
