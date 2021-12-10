@@ -27,7 +27,7 @@ def count_words(subreddit, word_list=[], after=None, count_dict=None):
                 if (count_dict is None):
                     count_dict = dict.fromkeys(word_list, 0)
                 for word in word_list:
-                    count = title.lower().count(word)
+                    count = title.lower().count(word + " ")
                     count_dict[word] += count
             after = first_hot.json().get("data").get("after")
             count_words(subreddit, word_list, after, count_dict)
@@ -43,7 +43,7 @@ def count_words(subreddit, word_list=[], after=None, count_dict=None):
             title = next_hot.json().get("data").get(
                 "children")[0].get("data").get("title")
             for word in word_list:
-                count = title.lower().count(word)
+                count = title.lower().count(word + " ")
                 count_dict[word] += count
         after = next_hot.json().get("data").get("after")
         if after is not None:
