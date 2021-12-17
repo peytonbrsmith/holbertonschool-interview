@@ -34,7 +34,7 @@ void heapify(heap_t *root)
 	heap_t *max;
 	int val;
 
-	if (root->left != NULL && root->right != NULL)
+	if (root->left != NULL || root->right != NULL)
 	{
 		max = root->left;
 		if (root->right && root->right->n > max->n)
@@ -81,27 +81,29 @@ int heap_extract(heap_t **root)
 	int val = 0;
 	heap_t *temp;
 
-	if (*root != NULL || root != NULL)
+	if (*root == NULL || root == NULL)
 	{
-		val = (*root)->n;
-
-		if ((*root)->left == NULL)
-		{
-			free(*root);
-			*root = NULL;
-			return (val);
-		}
-
-		temp = find_last(*root);
-		(*root)->n = temp->n;
-
-		if (temp->parent->right == temp)
-			temp->parent->right = NULL;
-		else
-			temp->parent->left = NULL;
-
-		heapify(*root);
-		free(temp);
+		return (val);
 	}
+
+	val = (*root)->n;
+
+	if ((*root)->left == NULL)
+	{
+		free(*root);
+		*root = NULL;
+		return (val);
+	}
+
+	temp = find_last(*root);
+	(*root)->n = temp->n;
+
+	if (temp->parent->right == temp)
+		temp->parent->right = NULL;
+	else
+		temp->parent->left = NULL;
+
+	heapify(*root);
+	free(temp);
 	return (val);
 }
