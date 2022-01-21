@@ -59,7 +59,13 @@ void Merge(int array[], int l_start, int mid, int r_end, int new_array[])
 		}
 	}
 	printf("[Done]: ");
-	print_array(array, r_end);
+	while (array && i < mid)
+	{
+		if (i > l_start)
+			printf(", ");
+		printf("%d", array[i]);
+		++i;
+	}
 }
 
 /**
